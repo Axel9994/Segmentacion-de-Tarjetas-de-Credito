@@ -1,0 +1,19 @@
+---
+title: "Segmentacion de Tarjetas de Creditos"
+author: "Axel Alemán"
+date: "31/7/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r cargar librerias, echo=FALSE}
+library(ggplot2)
+library(dplyr)
+```
+
+```{r cargar datos, echo=TRUE}
+cc_data<-read.csv('CC_GENERAL.csv', sep = ",", header = TRUE)
+```
