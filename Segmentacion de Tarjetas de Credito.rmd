@@ -9,11 +9,27 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+Cargar las librerias necesarias
+
 ```{r cargar librerias, echo=FALSE}
 library(ggplot2)
 library(dplyr)
+library(factoextra)
+set.seed(64)
 ```
+
+Cargar y Limpiar los Datos
 
 ```{r cargar datos, echo=TRUE}
 cc_data<-read.csv('CC_GENERAL.csv', sep = ",", header = TRUE)
+row.names(cc_data)<-cc_data$CUST_ID
+cc_data <- cc_data %>% select(-CUST_ID)
+cc_data <- cc_data[complete.cases(cc_data), ]
+```
+
+
+Analisis Exploratorio
+
+```{r analisis_eda, echo=TRUE}
+ggplot(cc_data, aes(x=BALANCE)) + geom_histogram(bins = 10)
 ```
