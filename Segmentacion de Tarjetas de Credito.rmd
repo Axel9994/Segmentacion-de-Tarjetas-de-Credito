@@ -42,3 +42,13 @@ ggplot(cc_data, aes(x=PAYMENTS)) + geom_histogram(bins = 10)
 ggplot(cc_data, aes(x=TENURE)) + geom_histogram(bins = 4)
 ```
 
+Reduccion de Dimensiones con PCA
+
+```{r pca, echo=TRUE}
+cc_data <- scale(cc_data)
+cc_data_pca <- prcomp(cc_data)
+data_pca <- as.data.frame(cc_data_pca$x[,1])
+data_pca$y <- cc_data_pca$x[,2]
+colnames(data_pca)<-c("x", "y")
+ggplot(data_pca, aes(x=x, y=y)) + geom_point()
+```
