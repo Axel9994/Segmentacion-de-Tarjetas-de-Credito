@@ -32,4 +32,13 @@ Analisis Exploratorio
 
 ```{r analisis_eda, echo=TRUE}
 ggplot(cc_data, aes(x=BALANCE)) + geom_histogram(bins = 10)
+ggplot(cc_data, aes(x=BALANCE_FREQUENCY)) + geom_histogram(bins = 10)
+ggplot(cc_data, aes(x=PURCHASES)) + geom_histogram(bins = 10)
+ggplot(cc_data, aes(x=PURCHASES_FREQUENCY)) + geom_histogram(bins = 10)
+ggplot(cc_data, aes(x=CASH_ADVANCE)) + geom_histogram(bins = 10)
+ggplot(cc_data, aes(x=CASH_ADVANCE_FREQUENCY)) + geom_histogram(bins = 10)
+ggplot(cc_data, aes(x=CREDIT_LIMIT)) + geom_histogram(bins = 10)
+ggplot(cc_data, aes(x=PAYMENTS)) + geom_histogram(bins = 10)
+ggplot(cc_data, aes(x=TENURE)) + geom_histogram(bins = 4)
 ```
+
