@@ -47,8 +47,26 @@ Reduccion de Dimensiones con PCA
 ```{r pca, echo=TRUE}
 cc_data <- scale(cc_data)
 cc_data_pca <- prcomp(cc_data)
+summary(cc_data_pca)
 data_pca <- as.data.frame(cc_data_pca$x[,1])
 data_pca$y <- cc_data_pca$x[,2]
 colnames(data_pca)<-c("x", "y")
 ggplot(data_pca, aes(x=x, y=y)) + geom_point()
 ```
+
+Clustering usando K-Means
+
+```{r clustering, echo=TRUE}
+fviz_nbclust(cc_data,kmeans,method="wss")
+fviz_nbclust(cc_data,kmeans,method="silhouette")
+resultados<-kmeans(cc_data,4,nstart=20)
+resultados$cluster
+resultados$centers
+resultados$size
+fviz_cluster(resultados,cc_data)
+```
+
+El Cluster 1 es de Consumidores de Alto Balance pero habitos de consumo comedido
+El Cluster 2 es de Consumidores de Bajo Balance pero son consumidores frecuentes
+El Cluster 3 es de Consumidores de Alto Balance y realizan compras frecuentemente
+El Cluster 4 es de Consumidores de Bajo Balance y Consumo muy austero
